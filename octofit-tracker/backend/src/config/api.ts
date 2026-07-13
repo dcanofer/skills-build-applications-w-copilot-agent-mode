@@ -1,4 +1,4 @@
-const codespaceName = process.env.CODESPACE_NAME;
+const codespaceName = process.env.CODESPACE_NAME?.trim();
 
 export const getApiBaseUrl = (): string => {
   if (codespaceName) {
