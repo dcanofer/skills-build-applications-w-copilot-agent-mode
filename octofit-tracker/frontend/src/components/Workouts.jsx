@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
-import { getApiBaseUrl, normalizeApiResponse } from '../utils/api.js';
+import { normalizeApiResponse } from '../utils/api.js';
 
 const apiPath = '/api/workouts/';
+const apiBaseUrl = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
+  : 'http://localhost:8000';
+const apiUrl = `${apiBaseUrl}${apiPath}`;
 
 function Workouts() {
   const [workouts, setWorkouts] = useState([]);
@@ -12,7 +16,7 @@ function Workouts() {
 
     const loadWorkouts = async () => {
       try {
-        const response = await fetch(`${getApiBaseUrl().replace(/\/api$/, '')}${apiPath}`);
+        const response = await fetch(apiUrl);
 
         if (!response.ok) {
           throw new Error(`Unable to load workouts: ${response.status}`);
