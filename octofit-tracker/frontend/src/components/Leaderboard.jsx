@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { normalizeApiResponse } from '../utils/api.js';
 
-const apiPath = '/api/leaderboard/';
-const apiBaseUrl = import.meta.env.VITE_CODESPACE_NAME
-  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
-  : 'http://localhost:8000';
-const apiUrl = `${apiBaseUrl}${apiPath}`;
+const apiUrl = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard`
+  : 'http://localhost:8000/api/leaderboard';
 
 function Leaderboard() {
   const [entries, setEntries] = useState([]);

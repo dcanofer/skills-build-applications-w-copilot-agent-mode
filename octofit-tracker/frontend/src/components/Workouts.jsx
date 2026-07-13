@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { normalizeApiResponse } from '../utils/api.js';
 
-const apiPath = '/api/workouts/';
-const apiBaseUrl = import.meta.env.VITE_CODESPACE_NAME
-  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
-  : 'http://localhost:8000';
-const apiUrl = `${apiBaseUrl}${apiPath}`;
+const apiUrl = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts`
+  : 'http://localhost:8000/api/workouts';
 
 function Workouts() {
   const [workouts, setWorkouts] = useState([]);
